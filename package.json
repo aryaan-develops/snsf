@@ -9,9 +9,29 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.4.0",
+    "@imagekit/nodejs": "^7.7.0",
+    "@radix-ui/react-dialog": "^1.1.17",
+    "@radix-ui/react-popover": "^1.1.17",
+    "@radix-ui/react-radio-group": "^1.4.1",
+    "@radix-ui/react-select": "^2.3.1",
+    "@radix-ui/react-tabs": "^1.1.15",
+    "clsx": "^2.1.1",
+    "date-fns": "^4.4.0",
+    "imagekit": "^6.0.0",
+    "lucide-react": "^1.20.0",
+    "mongoose": "^9.7.1",
     "next": "16.2.9",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-calendar": "^6.0.1",
+    "react-dom": "19.2.4",
+    "react-hook-form": "^7.79.0",
+    "react-hot-toast": "^2.6.0",
+    "react-webcam": "^7.2.0",
+    "tailwind-merge": "^3.6.0",
+    "xlsx": "^0.18.5",
+    "zod": "^4.4.3",
+    "zustand": "^5.0.14"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
