@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   LayoutDashboard,
   PlusCircle,
@@ -28,9 +28,16 @@ const navItems = [
 export default function TopBar() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const pageName =
-    navItems.find((n) => n.href === pathname)?.label ?? "Dashboard";
+    mounted && pathname
+      ? (navItems.find((n) => n.href === pathname)?.label ?? "Dashboard")
+      : "Dashboard";
 
   return (
     <>
