@@ -13,6 +13,7 @@ import {
   ChevronRight,
   Utensils,
   Image,
+  BarChart2,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -52,6 +53,12 @@ const navItems = [
     label: "Bills & Proofs",
     icon: Image,
     description: "Bills & Receipts",
+  },
+  {
+    href: "/reports",
+    label: "Reports",
+    icon: BarChart2,
+    description: "Filter & Analyse",
   },
 ];
 

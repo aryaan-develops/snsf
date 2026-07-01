@@ -12,12 +12,16 @@ export async function GET(request: NextRequest) {
     const year = searchParams.get("year");
     const billingType = searchParams.get("billingType");
     const modeOfPayment = searchParams.get("modeOfPayment");
+    const categoryId = searchParams.get("category");
+    const vendorName = searchParams.get("vendorName");
 
     const filter: Record<string, unknown> = {};
     if (month) filter.billingMonth = parseInt(month);
     if (year) filter.billingYear = parseInt(year);
     if (billingType) filter.billingType = billingType;
     if (modeOfPayment) filter.modeOfPayment = modeOfPayment;
+    if (categoryId) filter.category = categoryId;
+    if (vendorName) filter.vendorName = { $regex: new RegExp(vendorName.trim(), "i") };
 
     const skip = (page - 1) * limit;
     const [expenses, total] = await Promise.all([
@@ -92,17 +96,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Payment proof validation
-    if (
-      billingType === "Paid" &&
-      (modeOfPayment === "Digital" || modeOfPayment === "Cheque") &&
-      !paymentProofUrl
-    ) {
-      return NextResponse.json(
-        { error: "Payment proof is required for Digital/Cheque payments" },
-        { status: 400 }
-      );
-    }
+    // Payment proof is optional — can be attached later via settle/edit flow
 
     const expense = await Expense.create({
       category,
